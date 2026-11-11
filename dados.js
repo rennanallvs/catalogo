@@ -1,7 +1,7 @@
 // ===== DADOS DO CATÁLOGO =====
 // Edite o WhatsApp, as formas de pagamento e os perfumes aqui.
 
-var WHATS="5561999999999";
+var WHATS="5561994547677";
 // Formas de pagamento que o cliente pode escolher (edite, apague ou adicione)
 var FORMAS=["Pix","Cartão de crédito","Cartão de débito","Dinheiro"];
 
