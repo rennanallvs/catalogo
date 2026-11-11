@@ -22,12 +22,7 @@ body{
     padding:calc(40px + env(safe-area-inset-top,0px)) 20px 32px;
     background:radial-gradient(ellipse at top,rgba(124,92,255,.35),transparent 70%);
 }
-.favicon{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+
 .monograma{
     position:relative;
     width:96px;
