@@ -9,51 +9,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="stylos/catalogo.css">
 </head>
-<body>
-<section class="hero">
-<div class="monograma"><span>WJ</span></div>
-<h1 id="nomeLoja">Wallyn Jackson</h1>
-<div class="sub">Consultor de Perfumes</div>
-<p>Perfumes Eudora e O Boticário. Escolha, monte o carrinho e envie o pedido direto pelo WhatsApp.</p>
-<a class="contato" id="contato" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
-</section>
-<div class="bar"><div class="in">
-<input id="busca" placeholder="Buscar perfume, marca ou nota..." oninput="mostrar()">
-<div class="marcas" id="marcas"></div>
-<div class="chips" id="chips"></div>
-</div></div>
+ <body>
+  <section class="hero">
+   <div class="monograma"><span>WJ</span></div>
+    <h1 id="nomeLoja">Wallyn Jackson</h1>
+   <div class="sub">Consultor de Perfumes</div>
+    <p>Perfumes Eudora e O Boticário. Escolha, monte o carrinho e envie o pedido direto pelo WhatsApp.</p>
+     <a class="contato" id="contato" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+ </section>
+   <div class="bar"><div class="in">
+     <input id="busca" placeholder="Buscar perfume, marca ou nota..." oninput="mostrar()">
+   <div class="marcas" id="marcas"></div>
+   <div class="chips" id="chips"></div>
+   </div></div>
 <main class="grid" id="lista"></main>
 
-<button class="fab" id="fab" onclick="abrir(true)"><span id="fabq">🛒 0 itens</span><span id="fabt">R$ 0,00</span></button>
+     <button class="fab" id="fab" onclick="abrir(true)"><span id="fabq">🛒 0 itens</span><span id="fabt">R$ 0,00</span></button>
 
-<div class="fundo" id="fundo" onclick="if(event.target===this)abrir(false)">
-<div class="gaveta">
-<h2>Seu carrinho <button onclick="abrir(false)">✕</button></h2>
-<div id="itens"></div>
-<div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
-<div class="pag-t">Como você quer pagar?</div>
-<div class="pags" id="pags"></div>
-<div class="erro" id="erro"></div>
-<input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome (obrigatório)" style="margin-bottom:12px">
-<button class="enviar" onclick="enviar()">Enviar pedido no WhatsApp</button>
-<button class="limpar" onclick="carrinho={};atualizar()">Esvaziar carrinho</button>
-</div>
-</div>
+   <div class="fundo" id="fundo" onclick="if(event.target===this)abrir(false)">
+   <div class="gaveta">
+    <h2>Seu carrinho <button onclick="abrir(false)">✕</button></h2>
+   <div id="itens"></div>
+   <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+   <div class="pag-t">Como você quer pagar?</div>
+   <div class="pags" id="pags"></div>
+   <div class="erro" id="erro"></div>
+    <input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome (obrigatório)" style="margin-bottom:12px">
+    <button class="enviar" onclick="enviar()">Enviar pedido no WhatsApp</button>
+    <button class="limpar" onclick="carrinho={};atualizar()">Esvaziar carrinho</button>
+   </div>
+   </div>
 
-<div class="zoom" id="zoom" onclick="if(event.target===this)fechar()">
-<div class="caixa">
-<button class="fechar" onclick="fechar()">✕</button>
-<div class="grande" id="zFoto"></div>
-<div class="dados">
-<div class="marca" id="zMarca"></div>
-<div class="nome" id="zNome" style="font-size:20px;cursor:default"></div>
-<div class="nota" id="zNota"></div>
-<div class="preco" id="zPreco" style="font-size:20px;margin-top:6px"></div>
-<button class="add" id="zAdd">+ Adicionar ao carrinho</button>
-</div>
-</div>
-</div>
-<script src="dados.js"></script>
-<script src="script.js"></script>
-</body>
+   <div class="zoom" id="zoom" onclick="if(event.target===this)fechar()">
+   <div class="caixa">
+   <button class="fechar" onclick="fechar()">✕</button>
+   <div class="grande" id="zFoto"></div>
+   <div class="dados">
+   <div class="marca" id="zMarca"></div>
+   <div class="nome" id="zNome" style="font-size:20px;cursor:default"></div>
+   <div class="nota" id="zNota"></div>
+   <div class="preco" id="zPreco" style="font-size:20px;margin-top:6px"></div>
+    <button class="add" id="zAdd">+ Adicionar ao carrinho</button>
+   </div>
+   </div>
+   </div>
+  <script src="dados.js"></script>
+  <script src="script.js"></script>
+ </body>
 </html>
