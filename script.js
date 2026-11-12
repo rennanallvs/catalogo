@@ -23,7 +23,6 @@ function mostrar(){
   MARCAS.forEach(function(m){
     var it=res.filter(function(p){return p.b===m});
     if(!it.length)return;
-    if(marcaAtual==="Todas")html+='<h2 class="secao">'+m+'<small>'+it.length+' perfumes</small></h2>';
     html+=it.map(cartao).join("");
   });
   document.getElementById("lista").innerHTML=html||'<p class="vazio">Nenhum perfume encontrado.</p>';
