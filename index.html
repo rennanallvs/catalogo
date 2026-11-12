@@ -14,8 +14,12 @@
   <section class="hero">
     <button class="menu-btn" onclick="abrirMenu()" aria-label="Menu de informações">☰</button>
    <div class="monograma"><span>WJ</span></div>
-    <h1 id="nomeLoja">Walleyn.Jeckson</h1>
-   <div class="sub">Consultor de Perfumes</div>
+    <h1 id="nomeLoja">
+      Walleyn.Jeckson
+    </h1>
+   <div class="sub">
+    Consultor de Perfumes
+   </div>
     <p>Perfumes Eudora e O Boticário. Escolha, monte o carrinho e envie o pedido direto pelo WhatsApp.</p>
      <a class="contato" id="contato" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
  </section>
@@ -36,8 +40,8 @@
    <div class="pag-t">Como você quer pagar?</div>
    <div class="pags" id="pags"></div>
    <div class="erro" id="erro"></div>
-    <input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome (obrigatório)" style="margin-bottom:12px">
-    <input id="endereco" oninput="document.getElementById('erro').textContent=''" placeholder="Endereço de entrega: rua, número, bairro, cidade (obrigatório)" style="margin-bottom:12px">
+    <input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome *" style="margin-bottom:12px">
+    <input id="endereco" oninput="document.getElementById('erro').textContent=''" placeholder="Endereço de entrega*" style="margin-bottom:12px">
 <input id="complemento" placeholder="Complemento ou ponto de referência (opcional)" style="margin-bottom:12px">
    <p class="aviso">Usamos seu nome e endereço só para atender o pedido. <a href="#" onclick="abrir(false);abrirMenu();return false" style="color:inherit">Política de Privacidade</a></p>
     <button class="enviar" onclick="enviar()">Enviar pedido no WhatsApp</button>
