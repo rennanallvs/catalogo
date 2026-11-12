@@ -36,7 +36,9 @@
    <div class="pags" id="pags"></div>
    <div class="erro" id="erro"></div>
     <input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome (obrigatório)" style="margin-bottom:12px">
-    <p class="aviso">Usamos seu nome só para atender o pedido. Veja a Política de Privacidade no rodapé.</p>
+    <input id="endereco" oninput="document.getElementById('erro').textContent=''" placeholder="Endereço de entrega: rua, número, bairro, cidade (obrigatório)" style="margin-bottom:12px">
+<input id="complemento" placeholder="Complemento ou ponto de referência (opcional)" style="margin-bottom:12px">
+    <p>Coletamos apenas o nome, o endereço de entrega e a forma de pagamento que você informa no carrinho. Usamos essas informações somente para atender o seu pedido pelo WhatsApp.</p>
     <button class="enviar" onclick="enviar()">Enviar pedido no WhatsApp</button>
     <button class="limpar" onclick="carrinho={};atualizar()">Esvaziar carrinho</button>
    </div>

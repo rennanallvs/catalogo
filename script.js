@@ -72,7 +72,10 @@ function enviar(){
   var ids=Object.keys(carrinho);
   if(!ids.length)return;
   var nome=document.getElementById("cliente").value.trim(), total=0;
+  var endereco=document.getElementById("endereco").value.trim();
+  var compl=document.getElementById("complemento").value.trim();
   if(!nome){document.getElementById("erro").textContent="Digite seu nome para enviar o pedido.";document.getElementById("cliente").focus();return}
+  if(!endereco){document.getElementById("erro").textContent="Digite o endereço de entrega para enviar o pedido.";document.getElementById("endereco").focus();return}
   if(!pagto){document.getElementById("erro").textContent="Escolha a forma de pagamento para enviar o pedido.";return}
   var msg="Olá! Meu nome é "+nome+" e quero fazer um pedido:\n\n";
   ids.forEach(function(id){
@@ -82,6 +85,7 @@ function enviar(){
   });
   msg+="\nTotal: "+brl(total);
   msg+="\nForma de pagamento: "+pagto;
+  msg+="\nEndereço de entrega: "+endereco+(compl?" ("+compl+")":"");
   window.open("https://wa.me/"+WHATS+"?text="+encodeURIComponent(msg),"_blank");
 }
 
