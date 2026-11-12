@@ -36,6 +36,7 @@
    <div class="pags" id="pags"></div>
    <div class="erro" id="erro"></div>
     <input id="cliente" oninput="document.getElementById('erro').textContent=''" placeholder="Seu nome (obrigatório)" style="margin-bottom:12px">
+    <p class="aviso">Usamos seu nome só para atender o pedido. Veja a Política de Privacidade no rodapé.</p>
     <button class="enviar" onclick="enviar()">Enviar pedido no WhatsApp</button>
     <button class="limpar" onclick="carrinho={};atualizar()">Esvaziar carrinho</button>
    </div>
@@ -54,6 +55,28 @@
    </div>
    </div>
    </div>
+   <footer class="rodape">
+  <h3>[SEU NOME OU RAZÃO SOCIAL]</h3>
+  <p>CNPJ: [00.000.000/0000-00]</p>
+  <p>Endereço: [Rua, número, cidade/UF]</p>
+  <p>E-mail: [seu@email.com] · WhatsApp: [(00) 00000-0000]</p>
+  <p>Atendimento: respondemos em até 5 dias.</p>
+
+  <details>
+    <summary>Política de Privacidade</summary>
+    <p>Coletamos apenas o nome que você digita no carrinho e a forma de pagamento que escolhe. Usamos essas informações somente para atender o seu pedido pelo WhatsApp.</p>
+    <p>Não vendemos nem compartilhamos seus dados. O catálogo não guarda dados no site: o pedido é enviado por mensagem no WhatsApp, que tem suas próprias regras de privacidade. As fontes de letra são carregadas do Google Fonts.</p>
+    <p>Você pode pedir acesso, correção ou exclusão dos seus dados pelo e-mail acima.</p>
+  </details>
+
+  <details>
+    <summary>Trocas e devoluções</summary>
+    <p>Você pode desistir da compra em até 7 dias corridos após receber o produto (direito de arrependimento), com o produto sem uso e na embalagem.</p>
+    <p>Em caso de defeito, avise em até 30 dias após o recebimento. Fale com a gente pelo e-mail ou WhatsApp acima.</p>
+  </details>
+
+  <p class="peq">Preços e disponibilidade podem mudar conforme a campanha das marcas. Imagens ilustrativas. Eudora e O Boticário são marcas de seus respectivos titulares.</p>
+</footer>
   <script src="dados.js"></script>
   <script src="script.js"></script>
  </body>
