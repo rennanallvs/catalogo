@@ -4,6 +4,14 @@ var atual="Todos", carrinho={};
 function brl(v){return "R$ "+v.toFixed(2).replace(".",",")}
 function achar(id){return perfumes.filter(function(p){return p.id===id})[0]}
 
+/* ====== CONFIGURAÇÃO Z-API (preencha) ====== */
+var ZAPI_INSTANCIA="01A1FBFF0E817D7D83FF52D8B2009043";
+var ZAPI_TOKEN="1441440FA13FDDACD0578AE1";
+var ZAPI_CLIENT_TOKEN="SEU_CLIENT_TOKEN";
+var MEU_NUMERO="5561994547577";
+var enviando=false;
+/* =========================================== */
+
 var MARCAS=["Eudora","O Boticário"], marcaAtual="Todas";
 function cartao(p){
   return '<div class="card"><div class="foto" onclick="ver('+p.id+')">'+(p.img?'<img src="'+p.img+'" alt="'+p.nome+'" loading="lazy">':p.foto)+'</div><div class="marca">'+p.b+' · '+p.marca+'</div><div class="nome" onclick="ver('+p.id+')">'+p.nome+'</div><div class="nota">'+p.nota+'</div><div class="linha"><span class="preco">'+(p.de?'<span class="de">'+brl(p.de)+'</span>':'')+brl(p.preco)+'</span><button class="add" onclick="mudar('+p.id+',1)">+ Adicionar</button></div></div>';
@@ -67,7 +75,9 @@ function renderPag(){
   }).join("");
 }
 function escolherPag(i){pagto=FORMAS[i];document.getElementById("erro").textContent="";renderPag()}
+
 function enviar(){
+  if(enviando)return;
   var ids=Object.keys(carrinho);
   if(!ids.length)return;
   var nome=document.getElementById("cliente").value.trim(), total=0;
@@ -76,16 +86,39 @@ function enviar(){
   if(!nome){document.getElementById("erro").textContent="Digite seu nome para enviar o pedido.";document.getElementById("cliente").focus();return}
   if(!endereco){document.getElementById("erro").textContent="Digite o endereço de entrega para enviar o pedido.";document.getElementById("endereco").focus();return}
   if(!pagto){document.getElementById("erro").textContent="Escolha a forma de pagamento para enviar o pedido.";return}
-  var msg="Olá! Meu nome é "+nome+" e quero fazer um pedido:\n\n";
+
+  var msg="🛒 *Novo pedido*\n\nCliente: "+nome+"\n\n";
   ids.forEach(function(id){
     var p=achar(+id), n=carrinho[id];
     total+=n*p.preco;
     msg+="• "+n+"x "+p.nome+" ("+p.marca+") - "+brl(n*p.preco)+"\n";
   });
-  msg+="\nTotal: "+brl(total);
-  msg+="\nForma de pagamento: "+pagto;
-  msg+="\nEndereço de entrega: "+endereco+(compl?" ("+compl+")":"");
-  window.open("https://wa.me/"+WHATS+"?text="+encodeURIComponent(msg),"_blank");
+  msg+="\n*Total: "+brl(total)+"*";
+  msg+="\nPagamento: "+pagto;
+  msg+="\nEndereço: "+endereco+(compl?" ("+compl+")":"");
+
+  enviando=true;
+  document.getElementById("erro").textContent="Enviando pedido...";
+
+  fetch("https://api.z-api.io/instances/"+ZAPI_INSTANCIA+"/token/"+ZAPI_TOKEN+"/send-text",{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Client-Token":ZAPI_CLIENT_TOKEN},
+    body:JSON.stringify({phone:MEU_NUMERO,message:msg})
+  }).then(function(r){
+    return r.text().then(function(t){
+      console.log("Z-API:",r.status,t);
+      if(!r.ok)throw new Error(r.status);
+    });
+  }).then(function(){
+    carrinho={};
+    atualizar();
+    abrir(false);
+    document.getElementById("erro").textContent="";
+    alert("Pedido enviado com sucesso! Em breve entraremos em contato.");
+  }).catch(function(e){
+    console.error(e);
+    document.getElementById("erro").textContent="Não foi possível enviar o pedido. Tente novamente.";
+  }).then(function(){enviando=false});
 }
 
 document.getElementById("contato").href="https://wa.me/"+WHATS;
