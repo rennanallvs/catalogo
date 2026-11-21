@@ -4,13 +4,13 @@ var atual="Todos", carrinho={};
 function brl(v){return "R$ "+v.toFixed(2).replace(".",",")}
 function achar(id){return perfumes.filter(function(p){return p.id===id})[0]}
 
-/* ====== CONFIGURAÇÃO Z-API (preencha) ====== */
-var ZAPI_INSTANCIA="01A1FBFF0E817D7D83FF52D8B2009043";
-var ZAPI_TOKEN="1441440FA13FDDACD0578AE1";
-var ZAPI_CLIENT_TOKEN="SEU_CLIENT_TOKEN";
+
+var OMNI_CANAL="01A1FBFF0E817D7D83FF52D8B2009043";
+var OMNI_TOKEN="1441440FA13FDDACD0578AE1";
+var OMNI_URL="https://api.omni.z-api.io/v1/channels/"+OMNI_CANAL+"/messages";
 var MEU_NUMERO="5561994547577";
 var enviando=false;
-/* =========================================== */
+
 
 var MARCAS=["Eudora","O Boticário"], marcaAtual="Todas";
 function cartao(p){
@@ -100,13 +100,16 @@ function enviar(){
   enviando=true;
   document.getElementById("erro").textContent="Enviando pedido...";
 
-  fetch("https://api.z-api.io/instances/"+ZAPI_INSTANCIA+"/token/"+ZAPI_TOKEN+"/send-text",{
+  fetch(OMNI_URL,{
     method:"POST",
-    headers:{"Content-Type":"application/json","Client-Token":ZAPI_CLIENT_TOKEN},
-    body:JSON.stringify({phone:MEU_NUMERO,message:msg})
+    headers:{"Content-Type":"application/json","Authorization":"Bearer "+OMNI_TOKEN},
+    body:JSON.stringify({
+      recipient:{identifier:MEU_NUMERO},
+      content:{type:"TEXT",body:{message:msg}}
+    })
   }).then(function(r){
     return r.text().then(function(t){
-      console.log("Z-API:",r.status,t);
+      console.log("Omni Z-API:",r.status,t);
       if(!r.ok)throw new Error(r.status);
     });
   }).then(function(){
